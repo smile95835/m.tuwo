@@ -4,8 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>tuwo</title>
+    <link rel="icon" href="<%= BASE_URL %>ico/tuwo_favicon.ico">
+    <link rel="stylesheet" href="<%= BASE_URL %>css/reset.css">
+
+    <script src="<%= BASE_URL %>js/iscroll-probe.js"></script>
+    <script type="text/javascript">
+      function dynamicWidth(){
+        document.documentElement.style.fontSize=document.documentElement.clientWidth/3.75+"px"
+      }
+      dynamicWidth();
+      window.onresize = function(){
+        dynamicWidth();
+      }
+    </script>
+    <title>图窝</title>
   </head>
   <body>
     <noscript>

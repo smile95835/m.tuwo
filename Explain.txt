@@ -1,0 +1,34 @@
+/public => 静态资源文件
+
+/src => 项目核心目录
+
+/src/filters => 过滤器
+
+/src/icon => 临时图标
+
+/scr/api => ajax 请求接口地址
+
+/src/components => 组件
+    /dynamic => 动态的组件
+    /home => 首页的组件
+    /my => 我的组件
+    /rankingList => 排行榜组件
+    /public => 复用组件
+
+/src/router => 路由
+
+/src/store => 全局状态
+
+/src/utils/ => 临时set与get
+
+/src/services => ajax请求
+
+/src/views => 页面视图
+    /dynamic => 动态
+    /home => 首页
+    /my => 我的
+    /rankingList => 排行榜
+
+/src/App.vue => 根组件
+
+/src/main.js => 入口
