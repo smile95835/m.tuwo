@@ -19,11 +19,15 @@ export default {
     },
     mounted(){
         let scroll = new IScroll(this.$refs.content, {
-            probeType: 3
+            probeType: 3,
+            scrollX:true,
+            scrollY:false
         });
         this.scroll = scroll;
         scroll.on('beforeScrollStart', ()=>{
-            scroll.refresh();
+            // scroll.refresh();
+            console.log('滚动开始前');
+            console.log(this.scroll.maxScrollX);
         });
         if(this.reciveScroll){
             scroll.on('scroll', ()=>{
