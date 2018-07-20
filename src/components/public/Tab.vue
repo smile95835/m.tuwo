@@ -15,26 +15,26 @@ import myPng from '@/icon/my.png';
 export default {
   data(){
     return {
-      isActive:'/home',
+      isActive:'home',
       dataArr:[
         {
           title:'首页',
-          path:'/home',
+          path:'home',
           src:homePng
         },
         {
           title:'排行榜',
-          path:'/rankingList',
+          path:'rankingList',
           src:rankingListPng
         },
         {
           title:'动态',
-          path:'/dynamic',
+          path:'dynamic',
           src:dynamicPng
         },
         {
           title:'我的',
-          path:'/my',
+          path:'my',
           src:myPng
         }
       ]
@@ -43,8 +43,11 @@ export default {
   methods:{
     switchAction(v){
       this.isActive=v;
-      this.$router.push(v);
+      this.$router.push('/'+v);
     }
+  },
+  mounted(){
+    this.isActive = this.$route.name;
   }
 }
 </script>
