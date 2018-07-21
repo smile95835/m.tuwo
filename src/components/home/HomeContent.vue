@@ -1,6 +1,6 @@
 <template>
 <div class="content" ref="content">
-    <div class="scroll">
+    <div ref="scroll">
         <slot></slot>
     </div>
 </div>
@@ -10,7 +10,7 @@
 <script>
 export default {
     props: {
-        // 
+        width:Number
     },
     methods: {
         refreshDOM(){
@@ -18,6 +18,7 @@ export default {
         }
     },
     mounted(){
+        this.$refs.scroll.style.width = this.width+'%';
         let scroll = new IScroll(this.$refs.content, {
             probeType: 3,
             scrollX:true,
@@ -26,8 +27,6 @@ export default {
         this.scroll = scroll;
         scroll.on('beforeScrollStart', ()=>{
             // scroll.refresh();
-            console.log('滚动开始前');
-            console.log(this.scroll.maxScrollX);
         });
         if(this.reciveScroll){
             scroll.on('scroll', ()=>{
@@ -42,12 +41,8 @@ export default {
 
 <style scoped>
 .content{
-    background: #ebebeb;
+    background: #ff374a;
     width: 100%;
-    /* position: absolute;
-    top: 50px;
-    left: 0;
-    bottom: 0; */
     overflow: hidden;
 }
 </style>

@@ -1,26 +1,20 @@
 <template>
-<div>
+<div class="home">
     <div class="top">
         <div class="serch">
             <input type="text" />
             <img :src="navPng" @click="show()">
         </div>
-        <home-content class="nav">
-        <!-- <div class="nav"> -->
+        <home-content class="nav" :width="width">
             <div class="wrap">
-                <p><span :class="{active:isActive=='0'}">推荐</span></p>
-                <p><span :class="{active:isActive=='1'}">网页</span></p>
-                <p><span :class="{active:isActive=='2'}">插画</span></p>
-                <p><span :class="{active:isActive=='3'}">动漫</span></p>
-                <p><span :class="{active:isActive=='0'}">推荐</span></p>
-                <p><span :class="{active:isActive=='1'}">网页</span></p>
-                <p><span :class="{active:isActive=='2'}">插画</span></p>
-                <p><span :class="{active:isActive=='3'}">动漫</span></p>
+                <p v-for="(v,i) in dataArr" :key="i">
+                    <span @click="isShow(v.i)" :class="{active:isActive==v.i}">{{v.title}}</span>
+                </p>
             </div>
-        <!-- </div> -->
         </home-content>
-        <nav-right></nav-right>
     </div>
+    <nav-right></nav-right>
+    <h1>你好你好你好</h1>
 </div>    
 </template>
 <script>
@@ -31,17 +25,31 @@ export default {
     data(){
         return{
             navPng,
-            isActive:'0'
+            isActive:0,
+            dataArr:[
+                {title:'推荐',i:0},{title:'网页',i:1},{title:'插画',i:2},{title:'动漫',i:3},
+                {title:'学习',i:4},{title:'关注',i:5},{title:'UI',i:6},{title:'平面设计',i:7},
+                {title:'工业/产品',i:8},{title:'摄影',i:9},{title:'空间',i:10},{title:'影视',i:11},
+                {title:'陶艺',i:12},{title:'手工艺',i:13},{title:'纯艺术',i:14},{title:'服装',i:15},
+                {title:'三维',i:16},{title:'其他',i:17}
+            ],
+            width:null
         }
     },
     components:{
         NavRight,
-        HomeContent
+        HomeContent,
     },
     methods:{
         show(){
-            this.$pubsub.$emit('show-nav','你好');
+            this.$pubsub.$emit('show-nav');
+        },
+        isShow(v){
+            this.isActive = v;
         }
+    },
+    created(){
+        this.width = this.dataArr.length*25;
     }
 }
 </script>
@@ -52,7 +60,6 @@ export default {
         padding-top:0.16rem;
         height:0.88rem;
         background: #ff374a;
-
     }
     .serch{
         position: relative;
@@ -73,13 +80,10 @@ export default {
         top:0.04rem;
         right:0.16rem;
     }
-    .nav{
-        // width:100%;
-        // overflow-x:auto;
-        background: #ff374a;
+    .scroll{
+        width:450%;
     }
     .wrap{
-        width:200%;
         display: flex;
     }
     .nav p{
